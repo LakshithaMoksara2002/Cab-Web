@@ -1,165 +1,153 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" href="CSS/Login.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Mega City Cab Service</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<style>
+    /* General Styles */
+    body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-family: 'Arial', sans-serif;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Navbar */
+    .navbar {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        backdrop-filter: blur(10px);
+    }
+    .navbar a {
+        color: white !important;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+        color: #f39c12 !important;
+    }
+    .navbar-brand {
+        font-size: 1.5rem;
+        color: #f39c12 !important;
+    }
+
+    /* Login Box */
+    .login_main_wrapper {
+        max-width: 400px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+    .login_main_wrapper h2 {
+        color: #f39c12;
+        margin-bottom: 20px;
+    }
+    .login_main_wrapper p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 30px;
+    }
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .btn-primary {
+        background: #f39c12;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+        background: #e67e22;
+    }
+    .forgot-password {
+        color: #f39c12;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+    .forgot-password:hover {
+        color: #e67e22;
+    }
+
+    /* Footer */
+    .footer_wrapper {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+    }
+    .footer_wrapper p {
+        margin: 0;
+        color: #f39c12;
+    }
+</style>
 </head>
 <body>
-<input type="hidden" id="Response" value="<%=request.getAttribute("Response")%>">
-<div class="login_main_wrapper">
-    <!-- Header Section -->
-    <div class="header_section">
-        <div class="abc_header_section">
-            <div class="abc_header_section_left">
-                <a href="">Welcome</a>
-                <a href="">Types</a>
-                <a href="">Select Your Choice</a>
-                <a href="">Offer</a>
-            </div>
-            <div class="abc_header_section_middle">
-                <img src="assert/logo1.png" width="70" height="70" alt="LOGO" />
-                <p>MEGA CITY CAB SERVICE</p>
-            </div>
-            <div class="abc_header_section_right">
-                <img src="assert/search.png" width="20" alt="Search" />
-                <a href="login.html"><button>Become a Member</button></a>
-            </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">Mega City Cab Service</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            
+
         </div>
     </div>
+</nav>
 
-    <!-- Body Section -->
-    <div class="page_body_main_wrapper">
-        <div class="body_content">
-            <!-- Left Wrapper (Login Form) -->
-            <div class="left_warpper">
-                <form action="Login" method="get">
-                    <h2>Login to Your Account</h2>
-                    <p>Welcome back! Please enter your details.</p>
-                    <div class="left_warpper_user_input">
-                        <div class="user_input_tems">
-                            <label for="username">Username</label>
-                            <input name="name" type="text" placeholder="Enter your username" required>
-                        </div>
-                        <div class="user_input_tems">
-                            <label for="password">Password</label>
-                            <input name="pass" type="password" placeholder="Enter your password" required>
-                        </div>
-                        <div class="user_input_tems redirect_loging_page">
-                            <p><a href="forgot.jsp">Forgot Password?</a></p>
-                        </div>
-                        <div class="sign_in_method">
-                            <div class="sign_in_method_icons">
-                                <img src="assert/social-media1.png" alt="Social Media 1" width="100%" height="100%">
-                            </div>
-                            <div class="sign_in_method_icons">
-                                <img src="assert/social2.png" alt="Social Media 2" width="100%" height="100%">
-                            </div>
-                            <div class="sign_in_method_icons">
-                                <img src="assert/social3.png" alt="Social Media 3" width="100%" height="100%">
-                            </div>
-                        </div>
-                        <div class="user_input_tems redirect_loging_page">
-                            <p>Don't have an account? <a href="register.jsp">Register</a></p>
-                        </div>
-                    </div>
-                    <div class="footer_btn">
-                        <button type="submit" id="loginBtn">Login</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Right Wrapper (Image) -->
-            <div class="right_warpper">
-                <img src="assert/blog-1.jpg" alt="Login Image" height="400" width="100%">
-            </div>
+<!-- Login Form -->
+<div class="login_main_wrapper mt-5">
+    <h2>Login to Your Account</h2>
+    <p>Fill in your details below</p>
+    <form action="Login" method="get">
+        <div class="mb-3">
+            <input name="name" type="text" class="form-control" placeholder="User Name" required>
         </div>
-    </div>
-
-    <!-- Footer Section -->
-    <div class="footer_wrapper">
-        <div class="footer_header">
-            <div class="footer_header_left"></div>
-            <div class="footer_header_middle">
-                <img src="Assert/Group.svg" width="60" alt="Logo" />
-                <h2>MEGA CITY CAB SERVICE</h2>
-            </div>
-            <div class="footer_header_right"></div>
+        <div class="mb-3">
+            <input name="pass" type="password" class="form-control" placeholder="Your Password" required>
         </div>
-        <div class="middle_section_footer">
-            <div class="middle_section_footer_left">
-                <p>CONTACT</p>
-            </div>
-            <div class="middle_section_footer_middle">
-                <p>Join our mailing list for updates</p>
-                <p>Get news & offers</p>
-            </div>
-            <div class="middle_section_footer_right">
-                <p>WORKING HOURS</p>
-            </div>
+        <div class="mb-3 text-end">
+            <a href="forgot.jsp" class="forgot-password">Forgot Password?</a>
         </div>
-        <div class="bottom_section_footer">
-            <div class="bottom_section_footer_left">
-                <p>5 Colombo, 2002 Paris</p>
-                <p>Call - +94719208046</p>
-                <p>megacitycabservice@gmail.com</p>
-            </div>
-            <div class="bottom_section_footer_middle">
-                <div class="email_address_customize">
-                    <input type="email" placeholder="Enter your email" />
-                    <button>Subscribe</button>
-                </div>
-            </div>
-            <div class="bottom_section_footer_right">
-                <p>Mon-Fri 7.00am - 10.00pm</p>
-                <p>Sat: 7.00am - 6.00pm</p>
-                <p>Sun: 8.00am - 6.00pm</p>
-            </div>
-        </div>
-        <p id="copyright_2">
-            Copyright - Mega City Cab Service 2024 **
-        </p>
-    </div>
+        <button type="submit" id="loginBtn" class="btn btn-primary w-100">Login</button>
+    </form>
 </div>
 
-<!-- Popup Container -->
-<div id="popup" class="popup">
-    <div class="popup-content">
-        <span class="close">&times;</span>
-        <h3>Popup Message</h3>
-        <p>This is a simple popup message. You can put any content here.</p>
-    </div>
-</div>
+<!-- Footer -->
+<footer class="footer_wrapper">
+    <p>&copy; 2024 Mega City Cab Service</p>
+</footer>
 
-<script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script defer type="text/javascript">
-    var popup = document.getElementById("popup");
-    var message = document.getElementById("Response").value;
-    const loginBtn = document.getElementById("loginBtn");
-    loginBtn.addEventListener("click", () => {
-        if (message == "success") {
-            popup.style.display = "block";
-        } else {
-            Swal.fire({
-                title: "Good job!",
-                text: "Successfully logged into your account",
-                icon: "success"
-            });
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var message = document.getElementById("Response")?.value;
+    document.getElementById("loginBtn").addEventListener("click", function(event) {
+        if (message === "success") {
+            event.preventDefault();
+            Swal.fire("Success!", "You have successfully logged in.", "success");
         }
     });
-
-    var closeBtn = document.getElementsByClassName("close")[0];
-    closeBtn.onclick = function () {
-        popup.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == popup) {
-            popup.style.display = "none";
-        }
-    }
 </script>
 </body>
 </html>

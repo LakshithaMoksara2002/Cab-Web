@@ -31,7 +31,7 @@
         <!-- Hero Section -->
         <div class="hero">
             <h2>Discover Your Perfect Ride</h2>
-            <p>Affordable, Reliable, and Comfortable Vehicles for Every Journey</p>
+            <p>Guardian Cab – Safety First, Always</p>
         </div>
 
         <!-- Vehicle Section -->
