@@ -9,18 +9,13 @@ import com.megacab.model.RegisterModel;
 
 public class RegisterRepo {
     
-    // Updated Database connection details
-    private static final String URL = "jdbc:mysql://localhost:3306/megacab?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
-
     public String saveUser(RegisterModel registerModel) {
         Connection con = null;  // Declare inside the method to avoid potential reuse issues
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "root");
 
-            String sql = "INSERT INTO registered_user_details (name, nic, address, password) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO registered_user_details (name,nic,address, password) VALUES (?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, registerModel.getUserType());
             pst.setString(2, registerModel.getUserEmail());
