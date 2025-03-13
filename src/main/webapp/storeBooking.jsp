@@ -28,9 +28,9 @@
         // Open the document to write content
         document.open();
         
-        // Add title to the PDF
+        // Add a custom header with a logo and title
         Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 22, BaseColor.BLACK);
-        Paragraph title = new Paragraph("Booking Receipt", titleFont);
+        Paragraph title = new Paragraph("MegaCityCab Booking Receipt", titleFont);
         title.setAlignment(Element.ALIGN_CENTER);
         document.add(title);
         
@@ -46,47 +46,51 @@
         detailsHeading.setAlignment(Element.ALIGN_LEFT);
         document.add(detailsHeading);
         
-        // Add booking details inside a bordered table
+        // Add booking details inside a styled table
         PdfPTable table = new PdfPTable(2); // Two columns for field and value
         table.setWidthPercentage(100);
         table.setSpacingBefore(10f);
         table.setSpacingAfter(10f);
         
-        // Add headers with bold style
-        PdfPCell cell = new PdfPCell(new Phrase("Field", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12)));
+        // Add headers with bold style and background color
+        PdfPCell cell = new PdfPCell(new Phrase("Field", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setBackgroundColor(new BaseColor(37, 117, 252)); // Blue background
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Details", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12)));
+        cell = new PdfPCell(new Phrase("Details", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setBackgroundColor(new BaseColor(37, 117, 252)); // Blue background
         table.addCell(cell);
         
         // Add data to the table with padding and borders
-        table.addCell("Full Name:");
-        table.addCell(fullName);
+        Font dataFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
         
-        table.addCell("Address:");
-        table.addCell(address);
+        table.addCell(createCell("Full Name:", dataFont));
+        table.addCell(createCell(fullName, dataFont));
         
-        table.addCell("NIC:");
-        table.addCell(nic);
+        table.addCell(createCell("Address:", dataFont));
+        table.addCell(createCell(address, dataFont));
         
-        table.addCell("Phone:");
-        table.addCell(phone);
+        table.addCell(createCell("NIC:", dataFont));
+        table.addCell(createCell(nic, dataFont));
         
-        table.addCell("Email:");
-        table.addCell(email);
+        table.addCell(createCell("Phone:", dataFont));
+        table.addCell(createCell(phone, dataFont));
         
-        table.addCell("From Location:");
-        table.addCell(fromLocation);
+        table.addCell(createCell("Email:", dataFont));
+        table.addCell(createCell(email, dataFont));
         
-        table.addCell("To Location:");
-        table.addCell(toLocation);
+        table.addCell(createCell("From Location:", dataFont));
+        table.addCell(createCell(fromLocation, dataFont));
         
-        table.addCell("Vehicle Model:");
-        table.addCell(vehicleModel);
+        table.addCell(createCell("To Location:", dataFont));
+        table.addCell(createCell(toLocation, dataFont));
         
-        table.addCell("Rent Price:");
-        table.addCell("LKR " + rentPrice);
+        table.addCell(createCell("Vehicle Model:", dataFont));
+        table.addCell(createCell(vehicleModel, dataFont));
+        
+        table.addCell(createCell("Rent Price:", dataFont));
+        table.addCell(createCell("LKR " + rentPrice, dataFont));
         
         // Add the table to the document
         document.add(table);
@@ -95,7 +99,8 @@
         document.add(Chunk.NEWLINE);
         
         // Add footer with "Thank you" message
-        Paragraph footer = new Paragraph("Thank you for booking with us! Enjoy your trip!", FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.GRAY));
+        Font footerFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+        Paragraph footer = new Paragraph("Thank you for booking with MegaCityCab! Enjoy your trip!", footerFont);
         footer.setAlignment(Element.ALIGN_CENTER);
         document.add(footer);
         
@@ -105,5 +110,15 @@
         // Handle any errors during PDF generation
         e.printStackTrace();
         out.println("<script>alert('Error generating ticket. Try again.'); window.history.back();</script>");
+    }
+%>
+
+<%!
+    // Helper method to create a styled cell
+    private PdfPCell createCell(String text, Font font) {
+        PdfPCell cell = new PdfPCell(new Phrase(text, font));
+        cell.setPadding(8);
+        cell.setBorderColor(BaseColor.LIGHT_GRAY);
+        return cell;
     }
 %>

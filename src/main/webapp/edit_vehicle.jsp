@@ -50,40 +50,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Vehicle</title>
-    
-    <!-- Bootstrap CSS -->
+    <title>Edit Vehicle | MegaCityCab</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* General Styles */
         body {
-            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 700px;
-            margin-top: 50px;
-        }
+
+        /* Card Styling */
         .card {
+            background: white;
             border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
         }
+
+        .card h3 {
+            color: #2575fc;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #2575fc;
+            box-shadow: none;
+        }
+
         .btn-primary {
-            background-color: #007bff;
+            background: #2575fc;
             border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
+
         .btn-primary:hover {
-            background-color: #0056b3;
+            background: #1a5bbf;
+        }
+
+        .btn-outline-secondary {
+            border: 1px solid #2575fc;
+            color: #2575fc;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #2575fc;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<div class="container">
-    <div class="card p-4">
-        <h3 class="text-center text-primary"><i class="fas fa-edit"></i> Edit Vehicle</h3>
+    <div class="card">
+        <h3><i class="fas fa-edit"></i> Edit Vehicle</h3>
 
         <form action="EditVehicleServlet" method="post" class="mt-3">
             <input type="hidden" name="vehicleId" value="<%= vehicleId %>">
@@ -124,9 +181,7 @@
             <a href="admin_dashboard.jsp" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to Manage Vehicles</a>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
