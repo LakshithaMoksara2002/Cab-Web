@@ -170,7 +170,7 @@
                 <p>Enter your Email</p>
                 <input type="text" placeholder="Enter Email">
             </div>
-            <p id="mm1025_pid">Back to <a href="">Sign in</a></p>
+            <p id="mm1025_pid">Back to <a href="register.jsp">Sign in</a></p>
             <div class="login_interface_c1_user_froget_password_link">
                 <!-- <a href="">Forgot Password?</a> -->
             </div>
